@@ -4,6 +4,13 @@ body {
     min-height: 100vh;
 }
 
+.background{
+    background-color: #118ab2;
+}
+.navbar-size{
+    padding: 50px;
+}
+
 .brand-wrapper {
     padding-top: 7px;
     padding-bottom: 8px;

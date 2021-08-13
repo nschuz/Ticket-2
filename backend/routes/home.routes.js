@@ -1,13 +1,11 @@
-const {Router} = require('express');
+const { Router } = require('express');
+const { loginGet, registerGet, anyrequest, registerPost, loginPost } = require('../controllers/home.controller');
 const router = Router();
 
-router.get('/login', (req, res) => {
-    res.render('login');
-})
-router.get('/register', (req, res) => {
-    res.render('register');
-})
+router.get('/login', loginGet);
+router.post('/login', loginPost);
+router.get('/register', registerGet);
+router.post('/register', registerPost);
+//router.get('*', anyrequest);
 
-
-
-module.exports =router;
+module.exports = router;
