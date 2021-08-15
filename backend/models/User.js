@@ -86,7 +86,7 @@ const User = sequelize.define("user", {
         type: Sequelize.BOOLEAN,
         defaultValue: true
     },
-    last_login: {
+    last_connected: {
         type: Sequelize.DATE,
         allowNull: true
     },

@@ -28,6 +28,7 @@ const validateEmailPassword = async(email, password, req, res) => {
 
     } catch (e) {
         res.status(500).json("Problemas en el servidor intente mas tarde")
+        console.log(e);
     }
 
 }

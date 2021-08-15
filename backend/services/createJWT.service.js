@@ -20,6 +20,12 @@ const createJWT = (uid = '', email = '') => {
     })
 }
 
+/* 
+* Interensante 
+? Probando 
+! depreted
+Todo : implemtes 
+*/
 
 
 module.exports = {

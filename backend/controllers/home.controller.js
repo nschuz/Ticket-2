@@ -18,8 +18,16 @@ const loginPost = async(req, res) => {
     const user = await validateEmailPassword(email, password, req, res);
     if (user) {
         //console.log(user);
-        const token = await createJWT(user.dataValues.id_unique);
-        res.cookie('token', token).redirect('/app/home');
+        const token = await createJWT(user.dataValues.id_unique, user.dataValues.email);
+        const first_login = user.dataValues.first_login;
+        console.log(first_login);
+        if (first_login) {
+            const first_login = false;
+            // user.update({ first_login }, { where: { email } });
+            res.cookie('token', token).redirect('/app/welcome');
+        } else {
+            res.cookie('token', token).redirect('/app/home');
+        }
     }
 
     //   return res.status(500).json("Problemas en el Servidor Intente mas tarde");
@@ -35,11 +43,11 @@ const registerGet = (req, res) => {
     }
     //Registramos un usuario
 const registerPost = async(req, res) => {
-    const { first_name, last_name, email, password, date_birth } = req.body;
+    const { first_name, last_name, email, password, user_name, date_birth } = req.body;
     //verificamos si el usuario ya esta registrado
     if (await userExist(email)) {
         //registramos al usuario
-        await registerUser(first_name, last_name, email, password, date_birth, req, res);
+        await registerUser(first_name, last_name, email, password, user_name, date_birth, req, res);
         delete first_name;
         delete last_name;
         delete email;

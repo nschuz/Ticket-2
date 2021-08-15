@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const {User}  = require("../models/User");
+const { User } = require("../models/User");
 
-const registerUser= async (first_name, last_name, email, password, date_birth, req , res )=>{
+const registerUser = async(first_name, last_name, email, password, user_name, date_birth, req, res) => {
     try {
         //ciframos la contraseña
         const passHas = await bcrypt.hash(password, 10);
@@ -10,6 +10,7 @@ const registerUser= async (first_name, last_name, email, password, date_birth, r
         //Guardamos en la base de datos al usuario
         const user = await User.create({
             id_unique: uuidv4(),
+            user_name,
             first_name,
             last_name,
             password: passHas,
@@ -25,6 +26,6 @@ const registerUser= async (first_name, last_name, email, password, date_birth, r
     }
 }
 
-module.exports ={
+module.exports = {
     registerUser
 }
