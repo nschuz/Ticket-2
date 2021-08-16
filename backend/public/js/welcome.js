@@ -52,7 +52,7 @@ class Welcome {
             .then((data => {
                 console.log(data);
                 if (data === "ok") {
-                    window.location.replace("http://stackoverflow.com");
+                    window.location.replace("http://localhost:8080/app/myprofile");
                 }
             }));
 

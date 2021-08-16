@@ -4,6 +4,12 @@ const { User } = require('../models/User');
 const { createJWT } = require('../services/createJWT.service');
 const { validateEmailPassword } = require('../services/validateEmailPassword.service');
 
+/*
+* En este Archivo Home Tenemos Controladores:
+*Login, Register , RecuperarContraseña
+TODO: Implementar  RecuperarContraseña
+*/
+
 
 //Controaldores
 
@@ -20,9 +26,9 @@ const loginPost = async(req, res) => {
         //console.log(user);
         const token = await createJWT(user.dataValues.id_unique, user.dataValues.email);
         const first_login = user.dataValues.first_login;
-        console.log(first_login);
+        await User.update({ last_connected: Date.now() }, { where: { email: user.dataValues.email } });
+
         if (first_login) {
-            const first_login = false;
             // user.update({ first_login }, { where: { email } });
             res.cookie('token', token).redirect('/app/welcome');
         } else {
@@ -31,8 +37,10 @@ const loginPost = async(req, res) => {
     }
 
     //   return res.status(500).json("Problemas en el Servidor Intente mas tarde");
+}
 
-
+const getAuth = (req, res) => {
+    res.redirect(`https://github.com/login/oauth/authorize?client_id=0d2b7ff74ca4bce7ef38`)
 }
 
 
@@ -71,4 +79,5 @@ module.exports = {
     anyrequest,
     registerPost,
     loginPost,
+    getAuth,
 }

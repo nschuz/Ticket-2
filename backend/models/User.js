@@ -54,10 +54,7 @@ const User = sequelize.define("user", {
         type: Sequelize.STRING,
         allowNull: true
     },
-    skill3: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
+
     skill3: {
         type: Sequelize.STRING,
         allowNull: true
