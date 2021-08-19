@@ -3,6 +3,7 @@ const { registerUser } = require('../services/registerUser.service');
 const { User } = require('../models/User');
 const { createJWT } = require('../services/createJWT.service');
 const { validateEmailPassword } = require('../services/validateEmailPassword.service');
+const axios = require('axios');
 
 /*
 * En este Archivo Home Tenemos Controladores:

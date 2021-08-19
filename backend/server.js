@@ -11,6 +11,7 @@ const { User } = require('./models/User')
 
 require('dotenv').config({ path: "../dev.env" });
 const hbs = require('hbs');
+const { Comment } = require('./models/Comments');
 
 
 
@@ -64,7 +65,22 @@ class Server {
         try {
             await sequelize.authenticate();
             console.log('Conexion con la base de datos establecida'.green);
+
+
+            //db.meal.belongsTo(db.food, { foreignKey: 'idFood' })
+
+
+
+            await Comment.sync();
             await User.sync();
+            User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
+            Comment.belongsTo(User, { foreignKey: 'id_user' });
+
+
+            //db.meal.belongsTo(db.food, { foreignKey: 'idFood' })
+
+
+
             console.log("Todos los modelos fueron sincronizados correctamente".green);
         } catch (error) {
             console.error('Problema al conectrase o al sicronizar modelos'.red, error);

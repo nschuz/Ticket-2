@@ -13,7 +13,7 @@ class User {
         const divPadre = document.querySelector('#row-cards');
         const json_data = data;
         for (let i = 0; i < data.length; i++) {
-            const { about, first_name, last_name, hobbie, skill1, skill2, skill3, last_connected } = data[i];
+            const { about, first_name, last_name, hobbie, skill1, skill2, skill3, last_connected, user_name, email } = data[i];
 
             const divCol = document.createElement('div');
             divCol.classList.add('col-6');
@@ -31,7 +31,7 @@ class User {
             const divcolmd4 = document.createElement('div');
             divcolmd4.classList.add('col-md-4');
             const img = document.createElement('img');
-            img.setAttribute('src', 'https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg');
+            img.setAttribute('src', `http://localhost:8080/app/image/${email}`);
             img.classList.add('img-fluid');
 
 
@@ -41,6 +41,7 @@ class User {
 
             const divBody = document.createElement('div');
             divBody.classList.add("card-body");
+            divBody.classList.add('size-body');
 
             const nombreTitle = document.createElement('h5');
             nombreTitle.classList.add('card-title');
@@ -68,15 +69,38 @@ class User {
 
             const pCardText2 = document.createElement('p');
             pCardText2.classList.add('card-text');
+            const btnSeguir = document.createElement('button');
+            btnSeguir.classList.add('btn', 'btn-primary', 'mr-2');
+            btnSeguir.textContent = "Follow";
+
+            const btnPersonal = document.createElement('a');
+            btnPersonal.classList.add('btn', 'btn-success');
+            btnPersonal.setAttribute('href', `http://localhost:8080/app/profile/${user_name}`);
+            btnPersonal.textContent = "Visit Profile";
+            const br = document.createElement('br');
+            const lastUpdate = document.createElement('small');
+            lastUpdate.classList.add('text-muted');
+            lastUpdate.textContent = `Last updated: ${last_connected}`;
+
+
+
+
 
 
             pCardText.appendChild(pAbout);
             pCardText.appendChild(pHobbies);
             pCardText.appendChild(pSkills);
+
+            pCardText2.appendChild(btnSeguir);
+            pCardText2.appendChild(btnPersonal);
+            pCardText2.appendChild(br);
+            pCardText2.appendChild(lastUpdate);
+
             //pCardText.appendChild(h2Nombre);
 
             divBody.appendChild(nombreTitle);
             divBody.appendChild(pCardText);
+            divBody.appendChild(pCardText2);
 
 
             divmd8.appendChild(divBody);

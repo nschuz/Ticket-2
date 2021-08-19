@@ -1,5 +1,8 @@
 const { User } = require("../models/User");
 const jwt = require('jsonwebtoken');
+const path = require('path');
+const fs = require('fs');
+const axios = require('axios');
 
 const homeGet = (req, res) => {
     res.render('home');
@@ -22,9 +25,11 @@ const myprofileGet = async(req, res) => {
     let phone = user.dataValues.phone_number;
     let english = user.dataValues.english_level;
     let experience = user.dataValues.experience;
+    let img = `http://localhost:8080/app/image/${email}`;
 
 
     res.render('myprofile', {
+        img,
         username,
         firtname,
         lastname,
@@ -38,6 +43,7 @@ const myprofileGet = async(req, res) => {
         phone,
         english,
         experience,
+        img
     });
 }
 
@@ -55,6 +61,7 @@ const welcomePost = async(req, res) => {
     try {
         user.update({ about, hobbie, skill1, skill2, skill3, proffesion, phone_number, english_level, experience }, { where: { email } });
         console.log("Datos actualizados :)");
+
         res.json("ok");
     } catch (e) {
 
@@ -84,6 +91,8 @@ const profileGet = async(req, res) => {
         let experience = user.dataValues.experience;
         let email = user.dataValues.email;
         let connection = user.dataValues.last_connected;
+        let img = `http://localhost:8080/app/image/${email}`;
+
 
 
 
@@ -102,6 +111,7 @@ const profileGet = async(req, res) => {
             english,
             experience,
             connection,
+            img
         });
     }
 }
@@ -109,8 +119,6 @@ const profileGet = async(req, res) => {
 const GetProfiles = async(req, res) => {
     try {
         const users = await User.findAll();
-
-
         res.status(200).json(users);
     } catch (e) {
         res.status(400).json('Problema al solicitar tu peticion');
@@ -118,6 +126,48 @@ const GetProfiles = async(req, res) => {
     }
 }
 
+const GetImgProfile = async(req, res) => {
+    const { email } = req.params;
+    try {
+        //const filePath = path.join(__dirname, '../', 'images', email + '.png');
+        const filePath = path.join(__dirname, '../', 'images');
+        console.log(path.extname(filePath));
+        console.log(email);
+        let bandera = false;
+
+        await fs.readdir(filePath, async(err, files) => {
+            await files.forEach(file => {
+                console.log("file", file);
+                console.log(file.startsWith(email));
+                if (file.startsWith(email)) {
+                    bandera = true;
+                    const img = path.join(filePath, file);
+                    console.log("img:", img);
+                    return res.sendFile(img);
+                }
+            });
+            if (!bandera) {
+                const imgagenDefault = path.join(filePath, 'default.jpg');
+                return res.sendFile(imgagenDefault);
+            }
+        });
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(404).json("Problema")
+    }
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -127,5 +177,6 @@ module.exports = {
     newUser,
     welcomePost,
     profileGet,
-    GetProfiles
+    GetProfiles,
+    GetImgProfile,
 }

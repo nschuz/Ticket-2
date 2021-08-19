@@ -33,10 +33,15 @@ class Welcome {
         const skill3 = document.querySelector('#skill3')
         const skill3Value = skill3.options[skill3.selectedIndex].text;
         console.log(skill1Value, skill2Value, skill3Value);
-
+        const file = document.querySelector('input[type=file]').files[0];
+        console.log(file);
 
         fetch('http://localhost:8080/app/welcome/' + email, {
                 method: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/x-www-form-urlencoded',
+                //     'Content-Type': 'multipart/form-data'
+                // },
                 body: new URLSearchParams({
                     'about': about,
                     'hobbie': hobbies,
@@ -47,12 +52,34 @@ class Welcome {
                     'phone_number': phone,
                     'english_level': english,
                     'experience': experience,
+                    'image': file,
                 })
-            }).then(response => response.json())
+            })
+            .then(() => {
+
+                let form = new FormData();
+                const filename = file.name;
+                console.log(filename);
+                const extension = filename.split('.').pop();
+
+                const myNewFile = new File([file], `${email}.${extension}`);
+                form.append('image', myNewFile);
+
+                fetch('http://localhost:8080/app/welcome/' + email, {
+                    method: 'POST',
+                    // headers: {
+                    //     'Content-Type': 'multipart/form-data'
+                    // },
+                    body: form
+
+
+                })
+            })
+            .then(response => response.json())
             .then((data => {
                 console.log(data);
                 if (data === "ok") {
-                    window.location.replace("http://localhost:8080/app/myprofile");
+                    //     window.location.replace("http://localhost:8080/app/myprofile");
                 }
             }));
 
@@ -62,12 +89,25 @@ class Welcome {
 
 window.onload = async function() {
     const user = new Welcome("token");
+    const filei = document.querySelector('input[type=file]').files[0];
+    const inpuImage = document.querySelector('#image');
+    const imagen = document.querySelector('#imagen');
     const data = user.parseJWT(user.getCookie());
     console.log(data.email);
     const btnSubmit = document.getElementById('submit');
+
+    inpuImage.addEventListener('change', () => {
+        console.log("hola");
+        const [file] = inpuImage.files;
+        if (file) {
+            imagen.src = URL.createObjectURL(file)
+        }
+    })
+
     btnSubmit.addEventListener('click', function() {
         user.getData(data.email);
     });
+
 
 
 }
