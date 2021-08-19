@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const sequelize = require('../db/conexion');
+const { User } = require('./User');
 
 
 const Comment = sequelize.define("comment", {
@@ -16,7 +17,21 @@ const Comment = sequelize.define("comment", {
     message: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+
+    id_user: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            // Modelo de referencia
+            model: User,
+            // Nombre de la columna de referencia
+            key: 'id_user',
+        }
     }
+
+
+
 });
 
 

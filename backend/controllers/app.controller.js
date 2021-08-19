@@ -3,13 +3,15 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
+const { Comment } = require("../models/Comments");
 
+//Home get mostramos todos los usuarios registrados
 const homeGet = (req, res) => {
     res.render('home');
 }
 
+//Hacemos el render del perfil logeado
 const myprofileGet = async(req, res) => {
-
     const token = req.cookies.token;
     const { email } = jwt.verify(token, "secretkey");
     const user = await User.findOne({ where: { email } });
@@ -47,10 +49,12 @@ const myprofileGet = async(req, res) => {
     });
 }
 
+//Un nuveo usuario le hacemos el render de welcome
 const newUser = (req, res) => {
     res.render('welcome');
 }
 
+//Cuando un usuario se logea por primera vez hacemos que inserte sus datos
 const welcomePost = async(req, res) => {
     const { about, hobbie, skill1, skill2, skill3, proffesion, phone_number, english_level, experience } = req.body;
     const { email } = req.params;
@@ -70,6 +74,7 @@ const welcomePost = async(req, res) => {
     }
 }
 
+//Nos rgeresa info de un usuario
 const profileGet = async(req, res) => {
     const { username } = req.params;
     const user = await User.findOne({ where: { user_name: username } });
@@ -116,6 +121,7 @@ const profileGet = async(req, res) => {
     }
 }
 
+//Nos regresa todos los usuarios
 const GetProfiles = async(req, res) => {
     try {
         const users = await User.findAll();
@@ -126,6 +132,7 @@ const GetProfiles = async(req, res) => {
     }
 }
 
+//Nos regresa la imagen del usuario
 const GetImgProfile = async(req, res) => {
     const { email } = req.params;
     try {
@@ -169,6 +176,24 @@ const GetImgProfile = async(req, res) => {
 
 }
 
+//Agregamos un comenatrio a la base de datos
+const PostComment = async(req, res) => {
+    const { user_name, message, id_user } = req.body;
+    console.log(user_name, message, id_user);
+    try {
+        const comment = await Comment.create({
+            user_name,
+            message,
+            id_user,
+        })
+        res.json("Comentario actualizado");
+    } catch (error) {
+        res.json("Problema al insertar commentario");
+    }
+
+
+}
+
 
 
 module.exports = {
@@ -179,4 +204,5 @@ module.exports = {
     profileGet,
     GetProfiles,
     GetImgProfile,
+    PostComment,
 }
