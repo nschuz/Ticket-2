@@ -97,6 +97,7 @@ const profileGet = async(req, res) => {
         let email = user.dataValues.email;
         let connection = user.dataValues.last_connected;
         let img = `http://localhost:8080/app/image/${email}`;
+        let id = user.dataValues.user_id;
 
 
 
@@ -116,10 +117,38 @@ const profileGet = async(req, res) => {
             english,
             experience,
             connection,
-            img
+            img,
+            id,
         });
     }
 }
+
+//Nos regresa info de un usuario pero solo la imagen y el id
+const profileJsonGet = async(req, res) => {
+    const { email } = req.params;
+    const user = await User.findOne({ where: { email } });
+    if (user === null) {
+        res.status(400).json('Usuario no encontrado');
+    } else {
+        let username = user.dataValues.user_name;
+        let firstname = user.dataValues.first_name;
+        let lastname = user.dataValues.last_name;
+        let email = user.dataValues.email;
+        // let connection = user.dataValues.last_connected;
+        let img = `http://localhost:8080/app/image/${email}`;
+        let id = user.dataValues.id_user;
+        res.json({
+            firstname,
+            lastname,
+            email,
+            username,
+            imagen: img,
+            id,
+        })
+
+    }
+}
+
 
 //Nos regresa todos los usuarios
 const GetProfiles = async(req, res) => {
@@ -194,6 +223,26 @@ const PostComment = async(req, res) => {
 
 }
 
+const GetComment = async(req, res) => {
+    const { email } = req.params;
+    try {
+        const user = await User.findOne({ where: { email } });
+        const id = user.dataValues.id_user;
+        const commets = await Comment.findAll({ where: { id_user: id } });
+
+        if (user === null) {
+            res.status(404).json("Recurso no encontrado");
+        }
+        if (commets == null) {
+            res.status(404).json('Comentarios no econtrados');
+        }
+        res.status(200).json(commets);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json('Problemas en el servidor');
+    }
+}
+
 
 
 module.exports = {
@@ -205,4 +254,6 @@ module.exports = {
     GetProfiles,
     GetImgProfile,
     PostComment,
+    profileJsonGet,
+    GetComment
 }

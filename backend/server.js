@@ -67,7 +67,7 @@ class Server {
             console.log('Conexion con la base de datos establecida'.green);
             //db.meal.belongsTo(db.food, { foreignKey: 'idFood' })
             await User.sync();
-            await Comment.sync({ force: true });
+            await Comment.sync();
             User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
             Comment.belongsTo(User, { foreignKey: 'id_user' });
             console.log("Todos los modelos fueron sincronizados correctamente".green);
