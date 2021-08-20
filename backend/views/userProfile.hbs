@@ -1,355 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/login.css" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="/css/profile.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="/css/profile.css">
 </head>
+
 <body>
-    {{> navbar}}
-<div class="container emp-profile">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="{{img}}" width="195" height="195"/>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                       {{firtname}} {{lastname}}
-                                    </h5>
-                                    <h6>
-                                        {{profession}}
-                                    </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                </li>
-                                 <li class="nav-item">
-                                    <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="profile" aria-selected="false">Comments</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="friends-tab" data-toggle="tab" href="#friends" role="tab" aria-controls="profile" aria-selected="false">Friends</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+  {{> navbar}}
+  <div class="container emp-profile">
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-img">
+            <img src="{{img}}" width="195" height="195" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              {{firtname}} {{lastname}}
+            </h5>
+            <h6>
+              {{profession}}
+            </h6>
+            <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                  aria-selected="true">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                  aria-controls="profile" aria-selected="false">Timeline</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab"
+                  aria-controls="profile" aria-selected="false">Comments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="friends-tab" data-toggle="tab" href="#friends" role="tab"
+                  aria-controls="profile" aria-selected="false">Friends</a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-work">
+            <p>WORK LINK</p>
+            <a href='{{link}}'>Website Link</a><br />
+            <p>SKILLS</p>
+            <a href="">{{skill1}}</a><br />
+            <a href="">{{skill2}}</a><br />
+            <a href="">{{skill3}}</a><br />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>User Id</label>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href='{{link}}'>Website Link</a><br/>
-                            <p>SKILLS</p>
-                            <a href="">{{skill1}}</a><br/>
-                            <a href="">{{skill2}}</a><br/>
-                            <a href="">{{skill3}}</a><br/>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{username}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{firstname}} {{lastname}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p id="email">{{email}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{phone}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{profession}}</p>
-                                            </div>
-                                        </div>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{experience}}</p>
-                                            </div>
-                                        </div>
-                                
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{english}}</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Last connection</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{connection}}</p>
-                                            </div>
-                                        </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>{{about}}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-                                   
-                  <div class="col-md-8">
-            <div class="d-flex flex-column comment-section" id="divPadre">
-                
-                <div class="bg-white p-2">
-                    <div class="d-flex flex-row user-info">
-                      <img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
-                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
+                <div class="col-md-6">
+                  <p>{{username}}</p>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Name</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{firstname}} {{lastname}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email</label>
+                </div>
+                <div class="col-md-6">
+                  <p id="email">{{email}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Phone</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{phone}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Profession</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{profession}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Experience</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{experience}}</p>
+                </div>
+              </div>
 
-                
+              <div class="row">
+                <div class="col-md-6">
+                  <label>English Level</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{english}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Last connection</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{connection}}</p>
+                </div>
+              </div>
 
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Your Bio</label><br />
+                  <p>{{about}}</p>
+                </div>
+              </div>
+            </div>
 
-                <div class="bg-light p-2" id="divInput">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" id="photoMessage"><textarea class="form-control ml-1 shadow-none textarea" id="txtMessage"></textarea>
+            <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+
+              <div class="col-md-8">
+                <div class="d-flex flex-column comment-section" id="divPadre">
+                  <div class="bg-light p-2" id="divInput">
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
+                        src="https://i.imgur.com/RpzrMR2.jpg" width="40" id="photoMessage"><textarea
+                        class="form-control ml-1 shadow-none textarea" id="txtMessage"></textarea>
                     </div>
                     <div class="mt-2 text-right">
-                      <button class="btn btn-primary btn-sm shadow-none" type="button" id="btnMessage">Post comment</button>
+                      <button class="btn btn-primary btn-sm shadow-none" type="button" id="btnMessage">Post
+                        comment</button>
                     </div>
-                </div>
-            </div>
-        </div>
-                </div>
-
-                <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends-tab">
-        <div class="row">
-        <div class="col-md-8">
-            <div class="people-nearby">
-              
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Sophia Page</a></h5>
-                    <p>Software Engineer</p>
-                    <p class="text-muted">500m away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Emma Johnson</a></h5>
-                    <p>Model at Fashion</p>
-                    <p class="text-muted">800m away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Nora Wilson</a></h5>
-                    <p>Writer at Newspaper</p>
-                    <p class="text-muted">2.5km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Diana Amber</a></h5>
-                    <p>Student</p>
-                    <p class="text-muted">700m away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Addison Thomas</a></h5>
-                    <p>Barber at Fashion</p>
-                    <p class="text-muted">1.5km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Jonathon Thompson</a></h5>
-                    <p>Fashion Designer</p>
-                    <p class="text-muted">2km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Olivia Steward</a></h5>
-                    <p>Creative Director</p>
-                    <p class="text-muted">2km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Elena Foster</a></h5>
-                    <p>Executive Officer</p>
-                    <p class="text-muted">4km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Brian Walton</a></h5>
-                    <p>Designer at Designer</p>
-                    <p class="text-muted">3km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
-                  </div>
-                </div>
-              </div>
-              <div class="nearby-user">
-                <div class="row">
-                  <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
-                  </div>
-                  <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Cris Haris</a></h5>
-                    <p>General Manager at Manager</p>
-                    <p class="text-muted">1km away</p>
-                  </div>
-                  <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right">Add Friend</button>
                   </div>
                 </div>
               </div>
             </div>
-    	</div>
-	</div> 
-                </div>
 
+            <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends-tab">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="people-nearby">
+
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user"
+                            class="profile-photo-lg">
                         </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Sophia Page</a></h5>
+                          <p>Software Engineer</p>
+                          <p class="text-muted">500m away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
                     </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Emma Johnson</a></h5>
+                          <p>Model at Fashion</p>
+                          <p class="text-muted">800m away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Nora Wilson</a></h5>
+                          <p>Writer at Newspaper</p>
+                          <p class="text-muted">2.5km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Diana Amber</a></h5>
+                          <p>Student</p>
+                          <p class="text-muted">700m away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Addison Thomas</a></h5>
+                          <p>Barber at Fashion</p>
+                          <p class="text-muted">1.5km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Jonathon Thompson</a></h5>
+                          <p>Fashion Designer</p>
+                          <p class="text-muted">2km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Olivia Steward</a></h5>
+                          <p>Creative Director</p>
+                          <p class="text-muted">2km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Elena Foster</a></h5>
+                          <p>Executive Officer</p>
+                          <p class="text-muted">4km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Brian Walton</a></h5>
+                          <p>Designer at Designer</p>
+                          <p class="text-muted">3km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="nearby-user">
+                      <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user"
+                            class="profile-photo-lg">
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                          <h5><a href="#" class="profile-link">Cris Haris</a></h5>
+                          <p>General Manager at Manager</p>
+                          <p class="text-muted">1km away</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <button class="btn btn-primary pull-right">Add Friend</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </form>       
-    </div>   
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
 
 
 
-    {{>footer}}  
+  {{>footer}}
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-<script src="/js/profile.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/profile.js"></script>
 </body>
+
 </html>

@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 const { Comment } = require("../models/Comments");
+const { Friendship } = require("../models/Friendship");
 
 //Home get mostramos todos los usuarios registrados
 const homeGet = (req, res) => {
@@ -244,6 +245,17 @@ const GetComment = async(req, res) => {
 }
 
 
+const PostFriendship = async(req, res) => {
+    const { email } = req.params;
+    const { email_ori, email_des, id_user } = req.body;
+    const frienship = await Friendship.create({
+        email_ori,
+        email_des,
+        id_user
+    });
+    res.status(200).json("Recurso actualizado");
+}
+
 
 module.exports = {
     homeGet,
@@ -255,5 +267,6 @@ module.exports = {
     GetImgProfile,
     PostComment,
     profileJsonGet,
-    GetComment
+    GetComment,
+    PostFriendship
 }

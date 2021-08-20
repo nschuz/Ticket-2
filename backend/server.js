@@ -12,6 +12,7 @@ const { User } = require('./models/User')
 require('dotenv').config({ path: "../dev.env" });
 const hbs = require('hbs');
 const { Comment } = require('./models/Comments');
+const { Friendship } = require('./models/Friendship');
 
 
 
@@ -65,11 +66,17 @@ class Server {
         try {
             await sequelize.authenticate();
             console.log('Conexion con la base de datos establecida'.green);
-            //db.meal.belongsTo(db.food, { foreignKey: 'idFood' })
-            await User.sync();
-            await Comment.sync();
-            User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
-            Comment.belongsTo(User, { foreignKey: 'id_user' });
+            await Promise.all([User.sync(), Comment.sync(), Friendship.sync({ force: true })]).then(() => {
+                User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
+                Comment.belongsTo(User, { foreignKey: 'id_user' });
+
+                User.hasMany(Friendship, { foreignKey: 'id_friendship' });
+                Friendship.belongsTo(User, { foreignKey: 'id_user' });
+                //User.belongsTo(Friendship, { foreignKey: 'id_friendship' });
+
+            }).catch(err => {
+                console.log(err);
+            })
             console.log("Todos los modelos fueron sincronizados correctamente".green);
         } catch (error) {
             console.error('Problema al conectrase o al sicronizar modelos'.red, error);
@@ -79,7 +86,6 @@ class Server {
 
     //Est metodo van nuestras rutas
     routes() {
-
         this.app.use(this.homePath, require('./routes/home.routes'));
         this.app.use(this.appPath, require('./routes/app.routes'));
         this.app.use(function(req, res, next) {
