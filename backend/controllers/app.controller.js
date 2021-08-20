@@ -6,6 +6,7 @@ const axios = require('axios');
 const { Comment } = require("../models/Comments");
 const { Friendship } = require("../models/Friendship");
 
+
 //Home get mostramos todos los usuarios registrados
 const homeGet = (req, res) => {
     res.render('home');
@@ -135,6 +136,7 @@ const profileJsonGet = async(req, res) => {
         let firstname = user.dataValues.first_name;
         let lastname = user.dataValues.last_name;
         let email = user.dataValues.email;
+        let profession = user.dataValues.proffesion;
         // let connection = user.dataValues.last_connected;
         let img = `http://localhost:8080/app/image/${email}`;
         let id = user.dataValues.id_user;
@@ -144,6 +146,7 @@ const profileJsonGet = async(req, res) => {
             email,
             username,
             imagen: img,
+            profession,
             id,
         })
 
@@ -244,16 +247,36 @@ const GetComment = async(req, res) => {
     }
 }
 
-
+//Creamos una amistad con una persona 
+//Segun mi modelo de negocios en si creamos un seguimiento de personas igual que Twitter
 const PostFriendship = async(req, res) => {
     const { email } = req.params;
     const { email_ori, email_des, id_user } = req.body;
-    const frienship = await Friendship.create({
-        email_ori,
-        email_des,
-        id_user
-    });
-    res.status(200).json("Recurso actualizado");
+
+    const exist = await Friendship.findOne({ where: { email_ori, id_user } });
+
+    if (exist !== null) {
+        return res.status(401).json("Amistad ya creada");
+    } else {
+        const frienship = await Friendship.create({
+            email_ori,
+            email_des: email,
+            id_user
+        });
+        res.status(200).json("Amistad Guardada");
+    }
+
+
+}
+
+const GetFriendsByEmail = async(req, res) => {
+    const { email } = req.params;
+    const friends = await Friendship.findAll({ where: { email_des: email } });
+    if (friends !== null) {
+        return res.status(200).json(friends);
+    } else {
+        return res.status(403).json("No tiene amigos");
+    }
 }
 
 
@@ -268,5 +291,6 @@ module.exports = {
     PostComment,
     profileJsonGet,
     GetComment,
-    PostFriendship
+    PostFriendship,
+    GetFriendsByEmail
 }

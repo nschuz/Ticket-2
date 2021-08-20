@@ -2,6 +2,44 @@ class User {
     constructor(edpoit) {
         this.edpoit = edpoit;
     }
+    getCookie() {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${this.name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    alerta(message, error) {
+        const mensaje = document.createElement("div");
+        mensaje.classList.add('alert');
+        if (error === "error") {
+            mensaje.classList.add('alert-danger');
+        } else {
+            mensaje.classList.add('alert-success');
+        }
+        mensaje.textContent = message;
+
+        //agegar al dom
+        //Agregar al dom
+        const container = document.querySelector('#alertaDiv');
+        container.appendChild(mensaje);
+
+        //Quitar la laerta despues de 5 segundos 
+        setTimeout(() => {
+            mensaje.remove();
+        }, 2500);
+    }
+
+    parseJWT(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    }
+
+
+
 
     async fetchEndPoint() {
         const response = await fetch(this.edpoit);
@@ -70,7 +108,9 @@ class User {
             const pCardText2 = document.createElement('p');
             pCardText2.classList.add('card-text');
             const btnSeguir = document.createElement('button');
-            btnSeguir.classList.add('btn', 'btn-primary', 'mr-2');
+            btnSeguir.classList.add('btn', 'btn-primary', 'mr-2',
+                'follow');
+            btnSeguir.setAttribute('id', email);
             btnSeguir.textContent = "Follow";
 
             const btnPersonal = document.createElement('a');
@@ -81,11 +121,6 @@ class User {
             const lastUpdate = document.createElement('small');
             lastUpdate.classList.add('text-muted');
             lastUpdate.textContent = `Last updated: ${last_connected}`;
-
-
-
-
-
 
             pCardText.appendChild(pAbout);
             pCardText.appendChild(pHobbies);
@@ -115,6 +150,12 @@ class User {
             divPadre.appendChild(divCol);
 
         }
+
+    }
+
+
+
+    follow() {
 
     }
 

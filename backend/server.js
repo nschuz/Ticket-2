@@ -66,7 +66,7 @@ class Server {
         try {
             await sequelize.authenticate();
             console.log('Conexion con la base de datos establecida'.green);
-            await Promise.all([User.sync(), Comment.sync(), Friendship.sync({ force: true })]).then(() => {
+            await Promise.all([User.sync(), Comment.sync(), Friendship.sync()]).then(() => {
                 User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
                 Comment.belongsTo(User, { foreignKey: 'id_user' });
 
