@@ -1,6 +1,7 @@
 class User {
-    constructor(edpoit) {
+    constructor(edpoit, name) {
         this.edpoit = edpoit;
+        this.name = name;
     }
     getCookie() {
         const value = `; ${document.cookie}`;
@@ -155,7 +156,32 @@ class User {
 
 
 
-    follow() {
+    async follow(emailDestino, emailOrigen) {
+        const dataUserDestino = await fetch(`http://localhost:8080/app/profile-data/${emailDestino}`);
+        const data = await dataUserDestino.json();
+        const { id, email, username } = data;
+        if (emailOrigen == email) {
+            this.alerta(`No te puedes dar auto follow`, "error");
+            return
+        }
+
+        await fetch(`http://localhost:8080/app/friendship/${emailDestino}`, {
+                method: 'POST',
+                body: new URLSearchParams({
+                    'email_ori': emailOrigen,
+                    'id_user': id,
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data == "you were already a friend") {
+                    this.alerta(`Ya sigues a  ${username}, No puedes darle follow`, "error");
+                } else {
+                    this.alerta(`Felicidades ya siigues a ${username}`);
+                }
+            })
+            .catch(err => console.log(err));
+
 
     }
 
@@ -166,7 +192,18 @@ class User {
 
 
 window.onload = async function() {
-    const user = new User("http://localhost:8080/app/users");
+    const user = new User("http://localhost:8080/app/users", 'token');
+    const userLogeado = user.parseJWT(user.getCookie());
+    const userEmail = userLogeado.email;
     const data = await user.fetchEndPoint();
     user.generarCard(data);
+
+    const btnFollow = document.querySelectorAll('.follow');
+    for (let i = 0; i < btnFollow.length; i++) {
+        btnFollow[i].addEventListener('click', () => {
+            const idEmail = btnFollow[i].getAttribute('id');
+            //enviamos el emial
+            user.follow(idEmail, userEmail);
+        })
+    }
 }

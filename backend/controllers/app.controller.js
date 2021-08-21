@@ -256,14 +256,14 @@ const PostFriendship = async(req, res) => {
     const exist = await Friendship.findOne({ where: { email_ori, id_user } });
 
     if (exist !== null) {
-        return res.status(401).json("Amistad ya creada");
+        return res.status(401).json("you were already a friend");
     } else {
         const frienship = await Friendship.create({
             email_ori,
             email_des: email,
             id_user
         });
-        res.status(200).json("Amistad Guardada");
+        res.status(200).json("ok");
     }
 
 
