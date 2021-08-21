@@ -23,6 +23,7 @@
 <body>
 
     {{>navbar}}
+  <!--
     <div class="conatiner">
         <div id="chat-container">
             <div id="chat-window">
@@ -39,6 +40,52 @@
 
         </div>
     </div>
+
+-->
+
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12 text-center pt-3">
+            <h1>Chat Room</h1>
+        </div>
+    </div>
+    <div class="row justify-content-md-center mb-4">
+        <div class="col-md-6">
+        <!--start code-->
+            <div class="card">
+                <div class="card-header">
+                 
+                        <div class="input-group">
+                            <input id="message" type="text" name="messages" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="send" >Send <i class="fas fa-airplane"></i></button>
+                            </span>
+                        </div>
+                          <div id="actions">
+                                
+                            </div>
+                    
+                </div>
+                <div class="card-body messages-box">
+                    <ul class="list-unstyled messages-list" id="output">
+                    
+                    </ul>
+                </div>
+            </div>
+        	<!--end code-->
+        	
+        </div>
+    </div>
+	
+	<div class="row mb-4 mt-5">
+        <div class="col-12 text-center">
+            <p>Design by Ari Budin <a target="_blank" href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/">Bootstrap.News</a></p>
+        </div>
+    </div>
+</div>
+
+
     
     {{>footer}}
 <script src="/socket.io/socket.io.js"></script>

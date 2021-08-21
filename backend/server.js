@@ -102,11 +102,10 @@ class Server {
         io.on('connection', function(socket) {
             console.log("new connection", socket.id);
             socket.on('chat:message', (data) => {
-
+                //console.log(data);
                 //recibimos los datos y enviamos a todos data
                 io.sockets.emit('chat:message', data)
             })
-
             socket.on('chat:typing', (data) => {
                 socket.broadcast.emit('chat:typing', data);
             })
