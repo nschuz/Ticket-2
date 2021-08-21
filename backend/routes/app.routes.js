@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { homeGet, myprofileGet, newUser, welcomePost, profileGet, GetProfiles, GetImgProfile, PostComment, profileJsonGet, GetComment, PostFriendship, GetFriendsByEmail } = require('../controllers/app.controller');
+const { homeGet, myprofileGet, newUser, welcomePost, profileGet, GetProfiles, GetImgProfile, PostComment, profileJsonGet, GetComment, PostFriendship, GetFriendsByEmail, GetChat } = require('../controllers/app.controller');
 const { upload, storage } = require('../middlewares/multer');
 
 const router = Router();
@@ -16,6 +16,7 @@ router.get('/comment/:email', GetComment);
 router.get('/profile-data/:email', profileJsonGet);
 router.post('/friendship/:email', PostFriendship);
 router.get('/friends/:email', GetFriendsByEmail);
+router.get('/chat', GetChat)
 
 
 

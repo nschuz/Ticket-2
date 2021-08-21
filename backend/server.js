@@ -7,7 +7,7 @@ const { apiLimiter } = require('./middlewares/expressRateLimit')
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const { User } = require('./models/User')
-
+const SocketIO = require('socket.io');
 
 require('dotenv').config({ path: "../dev.env" });
 const hbs = require('hbs');
@@ -42,6 +42,10 @@ class Server {
 
         //Rutas de mi apliccion sd
         this.routes()
+
+        this.socket();
+
+
 
     }
 
@@ -93,11 +97,29 @@ class Server {
         });
     }
 
+    socket(server) {
+        const io = SocketIO(server);
+        io.on('connection', function(socket) {
+            console.log("new connection", socket.id);
+            socket.on('chat:message', (data) => {
+
+                //recibimos los datos y enviamos a todos data
+                io.sockets.emit('chat:message', data)
+            })
+
+            socket.on('chat:typing', (data) => {
+                socket.broadcast.emit('chat:typing', data);
+            })
+
+        })
+    }
+
     //Este metodo es el listen escucha al puerto
     listen() {
-        this.app.listen(this.port || 8080, () => {
+        const server = this.app.listen(this.port || 8080, () => {
             console.log(`Server corriendo en ${this.port}`.green);
         })
+        this.socket(server)
     }
 }
 

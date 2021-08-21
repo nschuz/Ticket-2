@@ -280,6 +280,11 @@ const GetFriendsByEmail = async(req, res) => {
 }
 
 
+const GetChat = (req, res) => {
+    res.render("chat");
+}
+
+
 module.exports = {
     homeGet,
     myprofileGet,
@@ -292,5 +297,6 @@ module.exports = {
     profileJsonGet,
     GetComment,
     PostFriendship,
-    GetFriendsByEmail
+    GetFriendsByEmail,
+    GetChat,
 }
