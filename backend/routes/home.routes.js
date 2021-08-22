@@ -1,38 +1,18 @@
 const { Router } = require('express');
 const axios = require('axios').default;
-const path = require('path');
 const { loginGet, registerGet, registerPost, loginPost, getAuth } = require('../controllers/home.controller');
-const { upload, storage } = require('../middlewares/multer');
-
-// const multer = require('multer')
-
-
-
-
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, '../images')
-//     },
-//     filename: (req, file, cb) => {
-//         console.log(file);
-//         cb(null, Date.now() + path.extname(file.originalname))
-//     }
-// })
-
-//const upload = multer({ storage: storage });
-
+const { checkLogin, checkRegister } = require('../middlewares/validationDTO');
+const { upload } = require('../middlewares/multer');
 
 
 
 const router = Router();
-
 router.get('/login', loginGet);
-router.post('/login', loginPost);
+router.post('/login', checkLogin, loginPost);
 router.get('/register', registerGet);
-router.post('/register', registerPost);
+router.post('/register', [checkRegister], registerPost);
+
 router.get('/auth', getAuth);
-
-
 router.get('/oauth-callback', function({ query: { code } }, res) {
     const body = {
         client_id: '0d2b7ff74ca4bce7ef38',
@@ -68,7 +48,6 @@ router.get('/oauth-callback', function({ query: { code } }, res) {
         })
         .catch((err) => res.status(500).json(err))
 })
-
 router.get('/upload', (req, res) => {
     res.render('upload');
 })
