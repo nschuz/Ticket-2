@@ -137,7 +137,7 @@ const profileJsonGet = async(req, res) => {
         let email = user.dataValues.email;
         let profession = user.dataValues.proffesion;
         // let connection = user.dataValues.last_connected;
-        let img = `https://teclanetwork.azurewebsites.net/${email}`;
+        let img = `https://teclanetwork.azurewebsites.net/app/image/${email}`;
         let id = user.dataValues.id_user;
         res.json({
             firstname,
