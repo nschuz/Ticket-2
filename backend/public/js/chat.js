@@ -40,7 +40,7 @@ class User {
     }
 
     async curretUser(email) {
-        const response = await fetch(`http://localhost:8080/app/profile-data/${email}`);
+        const response = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${email}`);
         const data = await response.json();
         return data;
     }

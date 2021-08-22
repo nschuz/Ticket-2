@@ -36,7 +36,7 @@ class Welcome {
         const file = document.querySelector('input[type=file]').files[0];
         console.log(file);
 
-        fetch('http://localhost:8080/app/welcome/' + email, {
+        fetch('https://teclanetwork.azurewebsites.net/app/welcome/' + email, {
                 method: 'POST',
                 // headers: {
                 //     'Content-Type': 'application/x-www-form-urlencoded',
@@ -65,7 +65,7 @@ class Welcome {
                 const myNewFile = new File([file], `${email}.${extension}`);
                 form.append('image', myNewFile);
 
-                fetch('http://localhost:8080/app/welcome/' + email, {
+                fetch('https://teclanetwork.azurewebsites.net/app/welcome/' + email, {
                     method: 'POST',
                     // headers: {
                     //     'Content-Type': 'multipart/form-data'
@@ -96,7 +96,7 @@ window.onload = async function() {
     const useremail = document.querySelector('#user-email');
     const { email } = user.parseJWT(user.getCookie());
 
-    const dataCurrentUser = await fetch(`http://localhost:8080/app/profile-data/${email}`);
+    const dataCurrentUser = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${email}`);
     const { firstname, lastname, imagen } = await dataCurrentUser.json();
 
     imagenn.src = imagen;
