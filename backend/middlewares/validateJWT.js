@@ -1,30 +1,31 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/User');
-const { Usuario } = require('../models/Usuario');
 
-const validarJWT = async(req = request, res = response, next) => {
+
+const validateJWT = async(req = request, res = response, next) => {
     //leer los header
     const token = req.cookies.token;
     //const token = req.header('acces-token');
-    console.log(token);
+
 
     if (!token) {
         return res.status(401).json({
-            msg: 'No hay token en la peticion'
+            msg: 'You Must Login'
         })
     }
 
     try {
-        const { uid } = jwt.verify(token, 'secretkey')
-            //ller el usuario que corresponda al uid
-        const usuario = await User.findOne({ where: { id_unico: uid } })
-        req.usuario = usuario;
+        const { email } = jwt.verify(token, 'secretkey')
+        console.log("Email: " + email);
+        //ller el usuario que corresponda al uid
+        const usuario = await User.findOne({ where: { email } })
+            // req.usuario = usuario;
         next();
 
     } catch (err) {
         console.log(err);
         res.status(401).json({
-            msg: 'Token no valido'
+            msg: 'This Token Is Not Valid'
         })
 
     }
@@ -32,5 +33,5 @@ const validarJWT = async(req = request, res = response, next) => {
 
 
 module.exports = {
-    validarJWT
+    validateJWT
 }

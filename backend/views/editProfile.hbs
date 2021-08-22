@@ -1,12 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Welcome</title>
+
+	<link rel="stylesheet" href="/css/edit.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/css/login.css" />
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+	<!-- MDB -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
 </head>
+
 <body>
-    Bienvenido por primera vez
+	{{> navbarLogin}}
+	<div class="container mt-5 mb-5">
+<!--
+<div class="alert alert-primary" role="alert">
+ Welcome &#128512;!!!. You need to insert your data to continue!
+</div>
+-->
+		<div class="row gutters">
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+				
+						<div class="account-settings">
+							<div class="user-profile">
+								<div class="profile-img">
+									<img src=""
+										alt=""  id="imagen" width="118" height="78"/>
+									<div class="file btn btn-lg btn-primary">
+										Change Photo
+										<input type="file" name="image" id="image" />
+									</div>
+								</div>
+								<h5 class="user-name" id="user-name"></h5>
+								<h6 class="user-email" id="user-email"></h6>
+							</div>
+							<div class="about">
+								<h5>About</h5>
+								<div class="form-outline">
+									<textarea class="form-control" id="about" rows="4"></textarea>
+									<label class="form-label" for="textAreaExample">Message</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="row gutters">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<h6 class="mb-2 text-primary">Personal Details</h6>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="hobbies">Hobbies</label>
+									<input type="text" class="form-control" id="hobbies"
+										placeholder="Enter your hobbies">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="profession">Profession</label>
+									<input type="text" class="form-control" id="profession"
+										placeholder="Enter Profession">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="phone">Phone</label>
+									<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="website">Website URL</label>
+									<input type="url" class="form-control" id="website" placeholder="Website url">
+								</div>
+							</div>
+						</div>
+						<div class="row gutters">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<h6 class="mt-3 mb-2 text-primary">More Details</h6>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="english">English Level</label>
+									<input type="text" class="form-control" id="english"
+										placeholder="Enter English Level">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="ecperience">Experience</label>
+									<input type="text" class="form-control" id="experience"
+										placeholder="Enter Experience">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="skill1">Skill 1</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="skill1">Skill 1</label>
+										</div>
+										<select class="custom-select" id="skill1">
+											<option value="1">Vue</option>
+											<option value="2">React</option>
+											<option value="3">Angular</option>
+											<option value="4">Jquery</option>
+											<option value="5">Ember</option>
+											<option value="6">BackBone Js</option>
+											<option value="7">Flutter</option>
+											<option value="8">Elm</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="skill2">Skill 2</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="skill2">Skill 2</label>
+										</div>
+										<select class="custom-select" id="skill2">
+											<option value="1">Java</option>
+											<option value="2">Java Script</option>
+											<option value="3">Python</option>
+											<option value="4">Ruby</option>
+											<option value="5">Kotlin</option>
+											<option value="6">C / C++</option>
+											<option value="7">Groovy</option>
+											<option value="8">Kotlin</option>
+											<option value="9">Swift</option>
+											<option value="10">Go</option>
+											<option value="11">Scala</option>
+											<option value="12">Solidity</option>
+											<option value="13">PHP</option>
+											<option value="14">Clojure </option>
+											<option value="15">Dart</option>
+											<option value="16">C#</option>
+											<option value="17">Solidity</option>
+										</select>
+									</div>
+								</div>
+								</div>
+
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="skill3">Skill 3</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="skill3">Skill 3</label>
+										</div>
+										<select class="custom-select" id="skill3">
+											<option value="1">SQL Databases</option>
+											<option value="2">NoSQL Databases</option>
+											<option value="3">Cloud Computing</option>
+											<option value="4">IOT</option>
+											<option value="5">IA</option>
+											<option value="6">Networks</option>
+											<option value="7">Backend</option>
+											<option value="8">Frontend</option>
+											<option value="9">DevOps</option>
+											<option value="10">Testing</option>
+											<option value="11">QA</option>
+											<option value="12">Security</option>
+											<option value="13">Hardware</option>
+											<option value="14">Distributed Systems</option>
+										</select>
+									</div>
+								</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="row gutters m-3">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="text-right">
+									<button type="button" id="submit" name="submit"
+										class="btn btn-primary">Update</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{>footer}}
+	<script src="/js/editProfile.js"></script>
 </body>
+
 </html>

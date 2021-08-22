@@ -45,6 +45,7 @@ class User {
         return data;
     }
 
+
 }
 
 //DOM ELEMENTS
@@ -55,7 +56,9 @@ let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
 
+
 window.onload = async function() {
+
     const user = new User('token');
     const userLogeado = user.parseJWT(user.getCookie());
     let { firstname, lastname, imagen } = await user.curretUser(userLogeado.email);
@@ -77,9 +80,6 @@ window.onload = async function() {
 
     socket.on('chat:message', function(data) {
         actions = '';
-        //     output.innerHTML += `<p>
-        //  <strong>${data.username}</strong>: ${data.message}
-        //      </p>`;
         const li = document.createElement('li');
         li.classList.add('messages-you', 'clearfix');
 

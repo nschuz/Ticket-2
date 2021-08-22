@@ -75,9 +75,13 @@ class Welcome {
 
                 })
             })
-            .then(() => {
-                window.location.replace("http://localhost:8080/app/myprofile");
-            });
+            .then(response => response.json())
+            .then((data => {
+                console.log(data);
+                if (data === "ok") {
+                    //     window.location.replace("http://localhost:8080/app/myprofile");
+                }
+            }));
 
     }
 }
@@ -87,23 +91,30 @@ window.onload = async function() {
     const user = new Welcome("token");
     const filei = document.querySelector('input[type=file]').files[0];
     const inpuImage = document.querySelector('#image');
-    const imagen = document.querySelector('#imagen');
-    const data = user.parseJWT(user.getCookie());
-    console.log(data.email);
+    const imagenn = document.querySelector('#imagen');
+    const username = document.querySelector('#user-name');
+    const useremail = document.querySelector('#user-email');
+    const { email } = user.parseJWT(user.getCookie());
+
+    const dataCurrentUser = await fetch(`http://localhost:8080/app/profile-data/${email}`);
+    const { firstname, lastname, imagen } = await dataCurrentUser.json();
+
+    imagenn.src = imagen;
+    username.textContent = `${firstname} ${lastname}`;
+    useremail.textContent = email;
+
     const btnSubmit = document.getElementById('submit');
 
     inpuImage.addEventListener('change', () => {
         console.log("hola");
         const [file] = inpuImage.files;
         if (file) {
-            imagen.src = URL.createObjectURL(file)
+            imagenn.src = URL.createObjectURL(file)
         }
     })
 
     btnSubmit.addEventListener('click', function() {
-        user.getData(data.email);
+        user.getData(email);
     });
-
-
 
 }

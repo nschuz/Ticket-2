@@ -32,7 +32,7 @@ const myprofileGet = async(req, res) => {
     let img = `http://localhost:8080/app/image/${email}`;
 
 
-    res.render('myprofile', {
+    res.render('profile', {
         img,
         username,
         firtname,
@@ -66,8 +66,7 @@ const welcomePost = async(req, res) => {
     }
     try {
         user.update({ about, hobbie, skill1, skill2, skill3, proffesion, phone_number, english_level, experience }, { where: { email } });
-        console.log("Datos actualizados :)");
-
+        user.update({ first_login: false }, { where: { email } })
         res.json("ok");
     } catch (e) {
 
@@ -285,6 +284,11 @@ const GetChat = (req, res) => {
 }
 
 
+const editProfileGet = (req, res) => {
+    res.render('editProfile');
+}
+
+
 module.exports = {
     homeGet,
     myprofileGet,
@@ -299,4 +303,5 @@ module.exports = {
     PostFriendship,
     GetFriendsByEmail,
     GetChat,
+    editProfileGet,
 }

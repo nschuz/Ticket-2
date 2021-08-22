@@ -4,10 +4,11 @@ body {
     min-height: 100vh;
 }
 
-.background{
+.background {
     background-color: #118ab2;
 }
-.navbar-size{
+
+.navbar-size {
     padding: 50px;
 }
 
@@ -155,6 +156,15 @@ body {
     -o-object-position: left;
     object-position: left;
 }
+
+
+/*
+#footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+*/
 
 
 /*# sourceMappingURL=login.css.map */
