@@ -177,7 +177,7 @@ class User {
                 if (data == "you were already a friend") {
                     this.alerta(`Ya sigues a  ${username}, No puedes darle follow`, "error");
                 } else {
-                    this.alerta(`Felicidades ya siigues a ${username}`);
+                    this.alerta(`Felicidades ya sigues a ${username}`);
                 }
             })
             .catch(err => console.log(err));
