@@ -44,7 +44,7 @@ class Welcome {
 
 
 
-        fetch('http://localhost:8080/app/welcome/' + email, {
+        fetch('https://teclanetwork.azurewebsites.net/app/welcome/' + email, {
                 method: 'POST',
                 // headers: {
                 //     'Content-Type': 'application/x-www-form-urlencoded',
@@ -73,7 +73,7 @@ class Welcome {
                 const myNewFile = new File([file], `${email}.${extension}`);
                 form.append('image', myNewFile);
 
-                fetch('http://localhost:8080/app/welcome/' + email, {
+                fetch('https://teclanetwork.azurewebsites.net/app/welcome/' + email, {
                     method: 'POST',
                     // headers: {
                     //     'Content-Type': 'multipart/form-data'
@@ -84,7 +84,7 @@ class Welcome {
                 })
             })
             .then(() => {
-                window.location.replace("http://localhost:8080/app/myprofile");
+                window.location.replace("https://teclanetwork.azurewebsites.net/app/myprofile");
             });
 
     }

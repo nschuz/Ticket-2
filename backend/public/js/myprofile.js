@@ -52,7 +52,7 @@ class Profile {
 
     async saveComment(txtValue, email, username, imagen, idUser) {
         const emailDestino = document.querySelector('#email').innerHTML;
-        const data = await fetch(`http://localhost:8080/app/profile-data/${emailDestino}`);
+        const data = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${emailDestino}`);
         const json = await data.json();
         const { id } = json;
 
@@ -61,7 +61,7 @@ class Profile {
             return;
         }
 
-        fetch('http://localhost:8080/app/comment', {
+        fetch('https://teclanetwork.azurewebsites.net/app/comment', {
                 method: 'POST',
                 body: new URLSearchParams({
                     'user_name': email,
@@ -80,13 +80,13 @@ class Profile {
 
     async renderComents() {
         const emailDestino = document.querySelector('#email').innerHTML;
-        const data = await fetch(`http://localhost:8080/app/comment/${emailDestino}`);
+        const data = await fetch(`https://teclanetwork.azurewebsites.net/app/comment/${emailDestino}`);
         const json = await data.json();
         for (let i = 0; i < json.length; i++) {
             //user_name=email
             const { message, user_name } = json[i];
             //obtenemos nombre e imagen
-            const dataOrigen = await fetch(`http://localhost:8080/app/profile-data/${user_name}`);
+            const dataOrigen = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${user_name}`);
             const jsonOrigen = await dataOrigen.json();
             const { firstname, lastname, imagen, username } = jsonOrigen;
             const divPadre = document.querySelector('#divPadre');
@@ -108,7 +108,7 @@ class Profile {
             const spanNombre = document.createElement('a');
             spanNombre.classList.add('d-block', 'font-weight-bold', 'name');
             spanNombre.textContent = `${firstname} ${lastname}`;
-            spanNombre.setAttribute('href', `http://localhost:8080/app/profile/${username}`);
+            spanNombre.setAttribute('href', `https://teclanetwork.azurewebsites.net/app/profile/${username}`);
 
             const divMessage = document.createElement('div');
             divMessage.classList.add('mt-2');
@@ -133,13 +133,13 @@ class Profile {
 
     async renderFriends() {
         const emailDestino = document.querySelector('#email').innerHTML;
-        const data = await fetch(`http://localhost:8080/app/friends/${emailDestino}`);
+        const data = await fetch(`https://teclanetwork.azurewebsites.net/app/friends/${emailDestino}`);
         const json = await data.json();
         for (let i = 0; i < json.length; i++) {
             //user_name=email
             const { email_ori } = json[i];
             //obtenemos nombre e imagen
-            const dataOrigen = await fetch(`http://localhost:8080/app/profile-data/${email_ori}`);
+            const dataOrigen = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${email_ori}`);
             const { imagen, firstname, lastname, profession, username } = await dataOrigen.json();
             const divPeople = document.querySelector('#people');
 
@@ -159,7 +159,7 @@ class Profile {
             const divData = document.createElement('div');
             divData.classList.add('col-md-7', 'col-sm-7');
             const h5 = document.createElement('h5');
-            h5.innerHTML = `<a href="http://localhost:8080/app/profile/${username}" class="profile-link">${firstname} ${lastname}</a>`;
+            h5.innerHTML = `<a href="https://teclanetwork.azurewebsites.net/app/profile/${username}" class="profile-link">${firstname} ${lastname}</a>`;
             const p = document.createElement('p');
             p.innerText = profession;
 

@@ -40,13 +40,13 @@ class User {
     }
 
     async curretUser(email) {
-        const response = await fetch(`http://localhost:8080/app/profile-data/${email}`);
+        const response = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${email}`);
         const data = await response.json();
         return data;
     }
 
     async renderChats() {
-        const chats = await fetch(`http://localhost:8080/app/history-chat`);
+        const chats = await fetch(`https://teclanetwork.azurewebsites.net/app/history-chat`);
         console.log(chats);
         const data = await chats.json();
         console.log(data);

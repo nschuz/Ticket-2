@@ -70,7 +70,7 @@ class User {
             const divcolmd4 = document.createElement('div');
             divcolmd4.classList.add('col-md-4');
             const img = document.createElement('img');
-            img.setAttribute('src', `http://localhost:8080/app/image/${email}`);
+            img.setAttribute('src', `https://teclanetwork.azurewebsites.net/app/image/${email}`);
             img.classList.add('img-fluid');
 
 
@@ -116,7 +116,7 @@ class User {
 
             const btnPersonal = document.createElement('a');
             btnPersonal.classList.add('btn', 'btn-success');
-            btnPersonal.setAttribute('href', `http://localhost:8080/app/profile/${user_name}`);
+            btnPersonal.setAttribute('href', `https://teclanetwork.azurewebsites.net/app/profile/${user_name}`);
             btnPersonal.textContent = "Visit Profile";
             const br = document.createElement('br');
             const lastUpdate = document.createElement('small');
@@ -157,7 +157,7 @@ class User {
 
 
     async follow(emailDestino, emailOrigen) {
-        const dataUserDestino = await fetch(`http://localhost:8080/app/profile-data/${emailDestino}`);
+        const dataUserDestino = await fetch(`https://teclanetwork.azurewebsites.net/app/profile-data/${emailDestino}`);
         const data = await dataUserDestino.json();
         const { id, email, username } = data;
         if (emailOrigen == email) {
@@ -165,7 +165,7 @@ class User {
             return
         }
 
-        await fetch(`http://localhost:8080/app/friendship/${emailDestino}`, {
+        await fetch(`https://teclanetwork.azurewebsites.net/app/friendship/${emailDestino}`, {
                 method: 'POST',
                 body: new URLSearchParams({
                     'email_ori': emailOrigen,
@@ -192,7 +192,7 @@ class User {
 
 
 window.onload = async function() {
-    const user = new User("http://localhost:8080/app/users", 'token');
+    const user = new User("https://teclanetwork.azurewebsites.net/app/users", 'token');
     const userLogeado = user.parseJWT(user.getCookie());
     const userEmail = userLogeado.email;
     const data = await user.fetchEndPoint();

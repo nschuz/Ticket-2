@@ -29,7 +29,7 @@ const myprofileGet = async(req, res) => {
     let phone = user.dataValues.phone_number;
     let english = user.dataValues.english_level;
     let experience = user.dataValues.experience;
-    let img = `http://localhost:8080/app/image/${email}`;
+    let img = `https://teclanetwork.azurewebsites.net/app/image/${email}`;
 
 
     res.render('profile', {
@@ -108,7 +108,7 @@ const profileGet = async(req, res) => {
         let experience = user.dataValues.experience;
         let email = user.dataValues.email;
         let connection = user.dataValues.last_connected;
-        let img = `http://localhost:8080/app/image/${email}`;
+        let img = `https://teclanetwork.azurewebsites.net/app/image/${email}`;
         let id = user.dataValues.user_id;
 
 
@@ -148,7 +148,7 @@ const profileJsonGet = async(req, res) => {
         let email = user.dataValues.email;
         let profession = user.dataValues.proffesion;
         // let connection = user.dataValues.last_connected;
-        let img = `http://localhost:8080/app/image/${email}`;
+        let img = `https://teclanetwork.azurewebsites.net/app/image/${email}`;
         let id = user.dataValues.id_user;
         res.json({
             firstname,
