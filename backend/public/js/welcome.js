@@ -36,6 +36,14 @@ class Welcome {
         const file = document.querySelector('input[type=file]').files[0];
         console.log(file);
 
+        if (about == '' || hobbies == '' || profession == '' || phone == '' || english == '' || experience == '' || file == null) {
+            console.log("Todos los datos son necesarios");
+            return;
+        }
+
+
+
+
         fetch('http://localhost:8080/app/welcome/' + email, {
                 method: 'POST',
                 // headers: {

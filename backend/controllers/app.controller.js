@@ -2,9 +2,9 @@ const { User } = require("../models/User");
 const jwt = require('jsonwebtoken');
 const path = require('path');
 const fs = require('fs');
-const axios = require('axios');
 const { Comment } = require("../models/Comments");
 const { Friendship } = require("../models/Friendship");
+const { Chat } = require("../models/Chat");
 
 
 //Home get mostramos todos los usuarios registrados
@@ -52,8 +52,19 @@ const myprofileGet = async(req, res) => {
 }
 
 //Un nuveo usuario le hacemos el render de welcome
-const newUser = (req, res) => {
-    res.render('welcome');
+const newUser = async(req, res) => {
+    const token = req.cookies.token;
+    const { email } = jwt.verify(token, "secretkey");
+    const user = await User.findOne({ where: { email } });
+    let firtname = user.dataValues.first_name;
+    let lastname = user.dataValues.last_name;
+
+    res.render('welcome', {
+        firtname,
+        lastname,
+        email
+
+    });
 }
 
 //Cuando un usuario se logea por primera vez hacemos que inserte sus datos
@@ -288,6 +299,11 @@ const editProfileGet = (req, res) => {
     res.render('editProfile');
 }
 
+const historyChatGet = async(req, res) => {
+    const chats = await Chat.findAll();
+    res.json(chats);
+}
+
 
 module.exports = {
     homeGet,
@@ -304,4 +320,5 @@ module.exports = {
     GetFriendsByEmail,
     GetChat,
     editProfileGet,
+    historyChatGet
 }

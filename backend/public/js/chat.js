@@ -45,6 +45,51 @@ class User {
         return data;
     }
 
+    async renderChats() {
+        const chats = await fetch(`http://localhost:8080/app/history-chat`);
+        console.log(chats);
+        const data = await chats.json();
+        console.log(data);
+
+        for (let i = 0; i < data.length; i++) {
+            const { name, message, img } = data[i];
+            const li = document.createElement('li');
+            li.classList.add('messages-you', 'clearfix');
+
+            const spanImage = document.createElement('span');
+            spanImage.classList.add('message-img', 'img-circle');
+
+            const img2 = document.createElement('img');
+            img2.src = img;
+            img2.setAttribute('width', '75');
+            img2.setAttribute('height', '75');
+            img2.classList.add('avatar-sm', 'border', 'rounded-circle');
+
+            const bodymessage = document.createElement('div');
+            bodymessage.classList.add('message-body', 'clearfix')
+
+            const bodyHeader = document.createElement('div');
+            bodyHeader.classList.add('message-header');
+            bodyHeader.innerHTML = `<strong class="messages-title">${name}</strong>`;
+
+
+            const p = document.createElement('p')
+            p.classList.add('messages-p');
+            p.innerText = message;
+
+            bodymessage.appendChild(bodyHeader);
+            bodymessage.appendChild(p);
+
+            spanImage.appendChild(img2);
+
+            li.appendChild(spanImage);
+            li.appendChild(bodymessage);
+            output.appendChild(li);
+
+        }
+
+    }
+
 
 }
 
@@ -64,6 +109,7 @@ window.onload = async function() {
     let { firstname, lastname, imagen } = await user.curretUser(userLogeado.email);
     firstname = firstname.toUpperCase();
     lastname = lastname.toUpperCase();
+    await user.renderChats();
     const socket = io();
     btn.addEventListener('click', () => {
         socket.emit('chat:message', {

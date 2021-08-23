@@ -13,6 +13,7 @@ require('dotenv').config({ path: "../dev.env" });
 const hbs = require('hbs');
 const { Comment } = require('./models/Comments');
 const { Friendship } = require('./models/Friendship');
+const { Chat } = require('./models/Chat');
 
 
 
@@ -70,10 +71,10 @@ class Server {
         try {
             await sequelize.authenticate();
             console.log('Conexion con la base de datos establecida'.green);
-            await Promise.all([User.sync(), Comment.sync(), Friendship.sync()]).then(() => {
+
+            await Promise.all([User.sync(), Comment.sync(), Friendship.sync(), Chat.sync()]).then(() => {
                 User.hasMany(Comment, { as: 'Comments', foreignKey: 'id_comment' });
                 Comment.belongsTo(User, { foreignKey: 'id_user' });
-
                 User.hasMany(Friendship, { foreignKey: 'id_friendship' });
                 Friendship.belongsTo(User, { foreignKey: 'id_user' });
                 //User.belongsTo(Friendship, { foreignKey: 'id_friendship' });
@@ -97,14 +98,21 @@ class Server {
         });
     }
 
-    socket(server) {
+    async socket(server) {
         const io = SocketIO(server);
         io.on('connection', function(socket) {
             console.log("new connection", socket.id);
-            socket.on('chat:message', (data) => {
-                //console.log(data);
-                //recibimos los datos y enviamos a todos data
+            socket.on('chat:message', async(data) => {
+                console.log("data: ", data);
+                const { username, message, img } = data;
+                const chat = await Chat.create({
+                        name: username,
+                        message,
+                        img
+                    })
+                    //recibimos los datos y enviamos a todos data
                 io.sockets.emit('chat:message', data)
+
             })
             socket.on('chat:typing', (data) => {
                 socket.broadcast.emit('chat:typing', data);

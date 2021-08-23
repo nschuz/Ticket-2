@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { homeGet, myprofileGet, newUser, welcomePost, profileGet, GetProfiles, GetImgProfile, PostComment, profileJsonGet, GetComment, PostFriendship, GetFriendsByEmail, GetChat, editProfileGet } = require('../controllers/app.controller');
+const { homeGet, myprofileGet, newUser, welcomePost, profileGet, GetProfiles, GetImgProfile, PostComment, profileJsonGet, GetComment, PostFriendship, GetFriendsByEmail, GetChat, editProfileGet, historyChatGet } = require('../controllers/app.controller');
 const { upload, storage } = require('../middlewares/multer');
 const { isNewUser } = require('../middlewares/newUser');
 const { validateJWT } = require('../middlewares/validateJWT');
@@ -18,7 +18,8 @@ router.get('/comment/:email', [validateJWT, isNewUser], GetComment);
 router.get('/profile-data/:email', [validateJWT, isNewUser], profileJsonGet);
 router.post('/friendship/:email', [validateJWT, isNewUser], PostFriendship);
 router.get('/friends/:email', [validateJWT, isNewUser], GetFriendsByEmail);
-router.get('/chat', [validateJWT, isNewUser], GetChat)
+router.get('/chat', [validateJWT, isNewUser], GetChat);
+router.get('/history-chat', [validateJWT, isNewUser], historyChatGet);
 router.get('/edit', [validateJWT, isNewUser], editProfileGet);
 
 
