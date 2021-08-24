@@ -12,6 +12,8 @@ router.post('/login', checkLogin, loginPost);
 router.get('/register', registerGet);
 router.post('/register', [checkRegister], registerPost);
 
+
+/* Ruta de pruebas y posible features*/
 router.get('/auth', getAuth);
 router.get('/oauth-callback', function({ query: { code } }, res) {
     const body = {
